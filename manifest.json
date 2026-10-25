@@ -1,0 +1,12 @@
+<?php
+require_once __DIR__ . '/auth_check.php';
+?>
+<aside class="sidebar glass-card">
+    <div class="fw-bold mb-3">Reception</div>
+    <nav class="nav flex-column gap-2">
+        <a class="nav-link active" href="/receptionist/dashboard.php"><i class="bi bi-house"></i> Dashboard</a>
+        <a class="nav-link" href="/receptionist/enquiries.php"><i class="bi bi-envelope-paper"></i> Enquiries</a>
+        <a class="nav-link" href="/receptionist/visitors.php"><i class="bi bi-people"></i> Visitors</a>
+        <a class="nav-link" href="/receptionist/calls.php"><i class="bi bi-telephone"></i> Calls</a>
+    </nav>
+</aside>
