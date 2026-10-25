@@ -13,20 +13,14 @@ if (!verify_csrf($_POST['csrf_token'] ?? '')) {
 
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
+$phone = trim($_POST['phone'] ?? '');
+$subject = trim($_POST['subject'] ?? 'Website enquiry');
 $message = trim($_POST['message'] ?? '');
 
 if ($name === '' || $message === '') {
     json_response('error', 'Name and message are required');
 }
 
-$stmt = query('INSERT INTO enquiries (name, email, phone, subject, message, status) VALUES (?, ?, ?, ?, ?, ?)', [
-    $name,
-    $email,
-    $_POST['phone'] ?? '',
-    $_POST['subject'] ?? 'Website enquiry',
-    $message,
-    'new'
-], 'ssssss');
+$stmt = query('INSERT INTO enquiries (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)', [$name, $email, $phone, $subject, $message], 'sssss');
 $stmt->close();
-
-json_response('success', 'Enquiry submitted successfully', ['name' => $name]);
+json_response('success', 'Your enquiry has been submitted.', ['name' => $name]);
